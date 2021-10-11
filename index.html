@@ -1,36 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="content-language" content="en-EN" />
-  <title>JEELIZ FACEFILTER: THREE.JS WIREFRAME MESH FACE DETECTION DEMO</title>
-  <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
-  <script src="js/jeelizFaceFilter.js"></script>
-  <!-- INCLUDE THREE.JS -->
-  <script src="js/three.min.js"></script>
-  <!-- INCLUDE A THREE.JS HELPER -->
-  <script src="js/JeelizThreeHelper.js"></script>
-  <!-- INCLUDE DEMO SCRIPT -->
-  <script src="js/modifiers.min.js"></script>
-  <script src="js/main.js"></script>
-  <link rel="stylesheet" href="main.css">
-</head>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="en-EN" />
+    <title>
+      JEELIZ FACEFILTER: THREE.JS WIREFRAME MESH FACE DETECTION DEMO
+    </title>
+    <!-- HAND RECOGNITION -->
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"></script>
+    <!-- INCLUDE THREE.JS -->
+    <script src="js/three.min.js"></script>
+    <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
+    <script src="js/jeelizFaceFilter.js"></script>
+    <!-- INCLUDE A THREE.JS HELPER -->
+    <script src="js/JeelizThreeHelper.js"></script>
+    <script src="./ThreeFlexMaterial.js"></script>
+    <!-- INCLUDE DEMO SCRIPT -->
+    <script src="https://unpkg.com/three@0.96.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="js/modifiers.min.js"></script>
+    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="main.css" />
+  </head>
 
-<body onload="main()">
-<section class = "container">
-  <div class = "left-half">
-    <h1>JEELIZ FACEFILTER AND THREE.JS WIREFRAME MESH FACE DETECTION DEMO</h1>
-    <h3>By Chris Godber</h3>
-    <p>Experiment with Three JS and Jeeliz Library </p>
-    <p>The mesh will map onto your face on the webcam and be mapped onto it.</p>
-    <p>Move around and see how the wireframe of the face 3D model follows your movements</p>
-    <h2>JavaScript Library Links</h2>
-    <p><a href = "https://threejs.org/" target="_blank">Three js</a></p>
-    <p><a href = "https://jeeliz.com/" target="_blank">Jeeliz</a></p>
-  </div>
-  <div class = "right-half">
-    <canvas width="600" height="550" id='jeeFaceFilterCanvas'></canvas>
-  </div>
-</section>
-</body>
+  <body onLoad="main()">
+    <section class="container">
+      <div class="left-half">
+        <input type="button" value="Stop music 🔈" id="music" />
+        <h1>FACEFILTERS WITH MUSIC</h1>
+        <h3>By Adrienn Zakariás</h3>
+        <p>Music helps you make the perfect photo! 🎶</p>
+        <p>Open your mouth for surprise! 👄</p>
+        <!-- kicsit bugos, kezet száj elé téve is annak érzékeli -->
+        <br />
+        <p>Filters available:</p>
+        <ul>
+          <section class="container2">
+            <div class="left-left-half">
+              <li id="graduation"><a href="#">Graduation hat</a></li>
+              <li id="cowboy"><a href="#">Cowboy hat</a></li>
+              <li id="boater"><a href="#">Boater hat</a></li>
+              <li id="sun"><a href="#">Sun hat</a></li>
+              <li id="pumpkin"><a href="#">Pumpkin hat</a></li>
+              <li id="wizard"><a href="#">Wizard hat</a></li>
+              <li id="party"><a href="#">Party hat</a></li>
+              <li id="alvin"><a href="#">Alvin's hat</a></li>
+              <li id="officer"><a href="#">Officer hat</a></li>
+              <li id="dog"><a href="#">Dog</a></li>
+            </div>
+            <div class="left-right-half">
+              <li id="chef"><a href="#">Chef's hat</a></li>
+              <li id="elegant"><a href="#">Elegant hat</a></li>
+              <li id="pirate"><a href="#">Pirate hat</a></li>
+              <li id="viking"><a href="#">Viking hat</a></li>
+              <li id="crown"><a href="#">Crown</a></li>
+              <li id="glasses"><a href="#">Glasses</a></li>
+              <li id="sunglass"><a href="#">Sun glasses</a></li>
+              <li id="flower"><a href="#">Flower</a></li>
+              <li id="mustache"><a href="#">Mustache</a></li>
+              <li id="helmet"><a href="#">Helmet</a></li>
+              <li id="venetian"><a href="#">Venetian mask</a></li>
+            </div>
+          </section>
+        </ul>
+        Extra:
+        <input type="button" value="Hand recognition ✋" id="hand" /> Extra2:
+        <input type="button" value="Look at planets in 3D 🌍" id="marker" />
+      </div>
+      <div class="right-half">
+        <canvas width="600" height="550" id="jeeFaceFilterCanvas"></canvas>
+        <button id="button">Take and download photo! 📸</button>
+        <iframe
+          id="arjs"
+          src="ar.html"
+          width="600"
+          height="550"
+          style="display: none"
+        ></iframe>
+      </div>
+    </section>
+  </body>
 </html>

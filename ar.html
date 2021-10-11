@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden">
+    <a-scene>
+      <a-assets>
+        <img id="moon" src="../models/moon.jpg" />
+        <img id="mars" src="../models/mars.jfif" />
+        <img id="earth" src="../models/earth.jpg" />
+        <img id="mercury" src="../models/mercury.jpg" />
+        <img id="venus" src="../models/venus.jfif" />
+        <img id="jupiter" src="../models/jupiter.jpg" />
+        <img id="saturn" src="../models/saturn.jpg" />
+        <img id="uranus" src="../models/uranus.jpg" />
+        <img id="neptune" src="../models/neptune.jpg" />
+      </a-assets>
+
+      <a-marker type="pattern" url="../models/moon.patt">
+        <a-sphere
+          material="src:#moon"
+          scale="1 1 1"
+          rotation="0 90 90"
+          position="0 0 -2"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/mars.patt">
+        <a-sphere
+          material="src:#mars"
+          scale="1 1 1"
+          rotation="0 90 90"
+          position="0 0 -2"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/earth.patt">
+        <a-sphere
+          material="src:#earth"
+          scale="1 1 1"
+          rotation="0 0 0"
+          position="0 0 -2"
+          animation="property:rotation; from:90 0 90; to:90 360 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/mercury.patt">
+        <a-sphere
+          material="src:#mercury"
+          scale="1 1 1"
+          rotation="0 90 90"
+          position="0 0 -2"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/venus.patt">
+        <a-sphere
+          material="src:#venus"
+          scale="1 1 1"
+          rotation="0 90 90"
+          position="0 0 -2"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/jupiter.patt">
+        <a-sphere
+          material="src:#jupiter"
+          scale="1.5 1.5 1.5"
+          rotation="0 90 90"
+          position="0 0 -1"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/saturn.patt">
+        <!-- <a-sphere
+          material="src:#saturn"
+          scale="1.5 1.5 1.5"
+          rotation="0 90 90"
+          position="0 0 -1"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere> -->
+        <a-entity
+          scale="0.007 0.007 0.007"
+          gltf-model="../models/saturn.glb"
+          position="1 0 0"
+          animation="property:rotation; from:0 0 0; to:360 360 360; dur:3000; easing:linear; loop:true;"
+        ></a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/uranus.patt">
+        <a-sphere
+          material="src:#uranus"
+          scale="1.5 1.5 1.5"
+          rotation="0 90 90"
+          position="0 0 -1"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/neptune.patt">
+        <a-sphere
+          material="src:#neptune"
+          scale="0.7 0.7 0.7"
+          rotation="0 90 90"
+          position="0 0 -2"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+    </a-scene>
+  </body>
+</html>

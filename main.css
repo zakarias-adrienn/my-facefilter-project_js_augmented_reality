@@ -1,19 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Iceland&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Iceland&display=swap");
 
-
-h1,h2,h3,h4,h5{
-  font-family: 'Iceland', cursive;
-  color:lawngreen;
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Iceland", cursive;
+  color: black;
 }
 
-a{
-  color:lawngreen;
+a {
+  color: rgb(168, 11, 121);
+  text-decoration: none;
+}
+a:hover {
+  color: black;
   text-decoration: none;
 }
 
-body{
-  background:black;
-  color:white;
+body {
+  background: #f4d4d6;
+  color: black;
 }
 
 div {
@@ -25,9 +32,14 @@ div {
 
 .container {
   display: flex;
-  font-family: 'Iceland', cursive;
-  font-size:1.2em;
-  border:lawngreen solid 4px;
+  font-family: "Iceland", cursive;
+  font-size: 1.2em;
+  border: black solid 4px;
+}
+
+.container2 {
+  display: flex;
+  font-family: "Iceland", cursive;
 }
 
 .left-half {
@@ -35,7 +47,65 @@ div {
   padding: 1rem;
 }
 
+.left-left-half {
+  flex: 1;
+  padding: 1rem;
+}
+
+.left-right-half {
+  flex: 1;
+  padding: 1rem;
+}
+
 .right-half {
   flex: 1;
   padding: 1rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.center {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  /* align-items: center; */
+}
+
+#button {
+  background-color: rgb(168, 11, 121);
+  border: none;
+  color: #f4d4d6;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#music {
+  background-color: rgb(168, 11, 121);
+  border: none;
+  color: #f4d4d6;
+  padding: 10px 10px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+p {
+  padding: 2px;
+  margin: 0;
+}
+
+#hand,
+#marker {
+  background-color: rgb(168, 11, 121);
+  border: none;
+  color: #f4d4d6;
+  padding: 10px 10px;
+  cursor: pointer;
+  display: inline-block;
 }
