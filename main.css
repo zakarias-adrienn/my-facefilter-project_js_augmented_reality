@@ -101,11 +101,23 @@ p {
 }
 
 #hand,
-#marker {
+#marker,
+#weather,
+#showweather {
   background-color: rgb(168, 11, 121);
   border: none;
   color: #f4d4d6;
   padding: 10px 10px;
   cursor: pointer;
   display: inline-block;
+}
+
+.active {
+  color: white;
+}
+
+#location {
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
 }

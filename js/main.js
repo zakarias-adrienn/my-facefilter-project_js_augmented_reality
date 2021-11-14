@@ -1,5 +1,27 @@
 "use strict";
 
+let graduationLi = document.getElementById("graduation");
+let cowboyLi = document.getElementById("cowboy");
+let boaterLi = document.getElementById("boater");
+let pumpkinLi = document.getElementById("pumpkin");
+let wizardLi = document.getElementById("wizard");
+let sunhatLi = document.getElementById("sun");
+let officerLi = document.getElementById("officer");
+let partyLi = document.getElementById("party");
+let flowerLi = document.getElementById("flower");
+let glassesLi = document.getElementById("glasses");
+let chefLi = document.getElementById("chef");
+let alvinLi = document.getElementById("alvin");
+let sunglassLi = document.getElementById("sunglass");
+let elegantLi = document.getElementById("elegant");
+let pirateLi = document.getElementById("pirate");
+let vikingLi = document.getElementById("viking");
+let helmetLi = document.getElementById("helmet");
+let mustacheLi = document.getElementById("mustache");
+let crownLi = document.getElementById("crown");
+let dogLi = document.getElementById("dog");
+let venetianLi = document.getElementById("venetian");
+
 const modelParams = {
   flipHorizontal: true,
   maxNumBoxes: 2,
@@ -201,9 +223,100 @@ function startAudio(music) {
   }
 }
 
+function addActiveClass(chosenFilter) {
+  graduationLi.classList.remove("active");
+  cowboyLi.classList.remove("active");
+  boaterLi.classList.remove("active");
+  pumpkinLi.classList.remove("active");
+  wizardLi.classList.remove("active");
+  sunhatLi.classList.remove("active");
+  officerLi.classList.remove("active");
+  partyLi.classList.remove("active");
+  flowerLi.classList.remove("active");
+  glassesLi.classList.remove("active");
+  chefLi.classList.remove("active");
+  alvinLi.classList.remove("active");
+  sunglassLi.classList.remove("active");
+  elegantLi.classList.remove("active");
+  pirateLi.classList.remove("active");
+  vikingLi.classList.remove("active");
+  crownLi.classList.remove("active");
+  helmetLi.classList.remove("active");
+  mustacheLi.classList.remove("active");
+  crownLi.classList.remove("active");
+  dogLi.classList.remove("active");
+  venetianLi.classList.remove("active");
+  switch (chosenFilter) {
+    case "graduation":
+      graduationLi.classList.add("active");
+      break;
+    case "cowboy":
+      cowboyLi.classList.add("active");
+      break;
+    case "boater":
+      boaterLi.classList.add("active");
+      break;
+    case "pumpkin":
+      pumpkinLi.classList.add("active");
+      break;
+    case "wizard":
+      wizardLi.classList.add("active");
+      break;
+    case "alvin":
+      alvinLi.classList.add("active");
+      break;
+    case "party":
+      partyLi.classList.add("active");
+      break;
+    case "sunhat":
+      sunhatLi.classList.add("active");
+      break;
+    case "officer":
+      officerLi.classList.add("active");
+      break;
+    case "dog":
+      dogLi.classList.add("active");
+      break;
+    case "chef":
+      chefLi.classList.add("active");
+      break;
+    case "elegant":
+      elegantLi.classList.add("active");
+      break;
+    case "pirate":
+      pirateLi.classList.add("active");
+      break;
+    case "viking":
+      vikingLi.classList.add("active");
+      break;
+    case "crown":
+      crownLi.classList.add("active");
+      break;
+    case "glasses":
+      glassesLi.classList.add("active");
+      break;
+    case "sunglass":
+      sunglassLi.classList.add("active");
+      break;
+    case "flower":
+      flowerLi.classList.add("active");
+      break;
+    case "mustache":
+      mustacheLi.classList.add("active");
+      break;
+    case "helmet":
+      helmetLi.classList.add("active");
+      break;
+    case "venetian":
+      venetianLi.classList.add("active");
+      break;
+  }
+}
+
 function onGraduationClicked(event) {
   // delete previous filter
   chosenFilter = "graduation";
+  addActiveClass(chosenFilter);
   if (around != null) {
     if (around != null) {
       around.stop();
@@ -242,6 +355,7 @@ function onGraduationClicked(event) {
 function onCowboyClicked(event) {
   // delete previous filter
   chosenFilter = "cowboy";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -277,6 +391,7 @@ function onCowboyClicked(event) {
 function onBoaterClicked(event) {
   // delete previous filter
   chosenFilter = "boater";
+  addActiveClass("boater");
   if (around != null) {
     around.stop();
   }
@@ -311,9 +426,46 @@ function onBoaterClicked(event) {
   startAudio("boat");
 }
 
+function onSunClicked(event) {
+  // delete previous filter
+  chosenFilter = "sunhat";
+  addActiveClass(chosenFilter);
+  if (around != null) {
+    around.stop();
+  }
+
+  threeStuffs.faceObject.children = [];
+  const loader = new THREE.GLTFLoader();
+
+  loader.load(
+    "../models/sunhat.glb",
+    function (glb) {
+      MESH = glb.scene;
+      MESH.frustumCulled = false;
+      MESH.side = THREE.DoubleSide;
+      MESH.scale.multiplyScalar(0.18); //milyen nagy
+      MESH.rotation.set(0.15, 6, 0);
+      MESH.position.set(0, 0.47, 0); //milyen magasan van
+      OBJECT = new THREE.Object3D();
+      OBJECT.add(MESH);
+
+      threeStuffs.faceObject.add(OBJECT);
+    },
+    function (xhr) {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    function (error) {
+      console.error(error);
+    }
+  );
+
+  startAudio("sun");
+}
+
 function onPumpkinClicked(event) {
   // delete previous filter
   chosenFilter = "pumpkin";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -349,6 +501,7 @@ function onPumpkinClicked(event) {
 function onWizardClicked(event) {
   // delete previous filter
   chosenFilter = "wizard";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -381,79 +534,10 @@ function onWizardClicked(event) {
   startAudio("wizard");
 }
 
-function onSunClicked(event) {
-  // delete previous filter
-  chosenFilter = "sunhat";
-  if (around != null) {
-    around.stop();
-  }
-
-  threeStuffs.faceObject.children = [];
-  const loader = new THREE.GLTFLoader();
-
-  loader.load(
-    "../models/sunhat.glb",
-    function (glb) {
-      MESH = glb.scene;
-      MESH.frustumCulled = false;
-      MESH.side = THREE.DoubleSide;
-      MESH.scale.multiplyScalar(0.18); //milyen nagy
-      MESH.rotation.set(0.15, 6, 0);
-      MESH.position.set(0, 0.47, 0); //milyen magasan van
-      OBJECT = new THREE.Object3D();
-      OBJECT.add(MESH);
-
-      threeStuffs.faceObject.add(OBJECT);
-    },
-    function (xhr) {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    },
-    function (error) {
-      console.error(error);
-    }
-  );
-
-  startAudio("sun");
-}
-
-function onOfficerClicked(event) {
-  // delete previous filter
-  chosenFilter = "officer";
-  if (around != null) {
-    around.stop();
-  }
-
-  threeStuffs.faceObject.children = [];
-  const loader = new THREE.GLTFLoader();
-
-  loader.load(
-    "../models/formal.glb",
-    function (glb) {
-      MESH = glb.scene;
-      MESH.frustumCulled = false;
-      MESH.side = THREE.DoubleSide;
-      MESH.scale.multiplyScalar(0.65); //milyen nagy
-      MESH.rotation.set(0.3, 0, 0);
-      MESH.position.set(0, 0.9, 0.0); //milyen magasan van
-      OBJECT = new THREE.Object3D();
-      OBJECT.add(MESH);
-
-      threeStuffs.faceObject.add(OBJECT);
-    },
-    function (xhr) {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    },
-    function (error) {
-      console.error(error);
-    }
-  );
-
-  startAudio("officer");
-}
-
 function onPartyClicked(event) {
   // delete previous filter
-  chosenFilter = "partyhat";
+  chosenFilter = "party";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -486,114 +570,10 @@ function onPartyClicked(event) {
   startAudio("party");
 }
 
-function onFlowerClicked(event) {
-  // delete previous filter
-  chosenFilter = "flower";
-  if (around != null) {
-    around.stop();
-  }
-
-  threeStuffs.faceObject.children = [];
-  const loader = new THREE.GLTFLoader();
-
-  loader.load(
-    "../models/flower.glb",
-    function (glb) {
-      MESH = glb.scene;
-      MESH.frustumCulled = false;
-      MESH.side = THREE.DoubleSide;
-      MESH.scale.multiplyScalar(1.3); //milyen nagy
-      MESH.rotation.set(0, 70, 1);
-      MESH.position.set(-0.5, 0.8, 0.0); //milyen magasan van
-      OBJECT = new THREE.Object3D();
-      OBJECT.add(MESH);
-
-      threeStuffs.faceObject.add(OBJECT);
-    },
-    function (xhr) {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    },
-    function (error) {
-      console.error(error);
-    }
-  );
-
-  startAudio("flower");
-}
-
-function onGlassesClicked(event) {
-  // delete previous filter
-  chosenFilter = "glasses";
-  if (around != null) {
-    around.stop();
-  }
-
-  threeStuffs.faceObject.children = [];
-  const loader = new THREE.GLTFLoader();
-
-  loader.load(
-    "../models/glasses.glb",
-    function (glb) {
-      MESH = glb.scene;
-      MESH.frustumCulled = false;
-      MESH.side = THREE.DoubleSide;
-      MESH.scale.multiplyScalar(0.9); //milyen nagy
-      MESH.rotation.set(0, 0, 0);
-      MESH.position.set(-0.05, 0.35, 0.0); //milyen magasan van
-      OBJECT = new THREE.Object3D();
-      OBJECT.add(MESH);
-
-      threeStuffs.faceObject.add(OBJECT);
-    },
-    function (xhr) {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    },
-    function (error) {
-      console.error(error);
-    }
-  );
-
-  startAudio("glass");
-}
-
-function onSunGlassesClicked(event) {
-  // delete previous filter
-  chosenFilter = "sunglass";
-  if (around != null) {
-    around.stop();
-  }
-
-  threeStuffs.faceObject.children = [];
-  const loader = new THREE.GLTFLoader();
-
-  loader.load(
-    "../models/glazz.glb",
-    function (glb) {
-      MESH = glb.scene;
-      MESH.frustumCulled = false;
-      MESH.side = THREE.DoubleSide;
-      MESH.scale.multiplyScalar(0.098); //milyen nagy
-      MESH.rotation.set(0, 0, 0);
-      MESH.position.set(-0.05, 0.38, 0.0); //milyen magasan van
-      OBJECT = new THREE.Object3D();
-      OBJECT.add(MESH);
-
-      threeStuffs.faceObject.add(OBJECT);
-    },
-    function (xhr) {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    },
-    function (error) {
-      console.error(error);
-    }
-  );
-
-  startAudio("sunglass");
-}
-
 function onAlvinClicked(event) {
   // delete previous filter
   chosenFilter = "alvin";
+  addActiveClass("alvin");
   if (around != null) {
     around.stop();
   }
@@ -626,9 +606,111 @@ function onAlvinClicked(event) {
   startAudio("alvin");
 }
 
+function onOfficerClicked(event) {
+  // delete previous filter
+  chosenFilter = "officer";
+  addActiveClass(chosenFilter);
+  if (around != null) {
+    around.stop();
+  }
+
+  threeStuffs.faceObject.children = [];
+  const loader = new THREE.GLTFLoader();
+
+  loader.load(
+    "../models/formal.glb",
+    function (glb) {
+      MESH = glb.scene;
+      MESH.frustumCulled = false;
+      MESH.side = THREE.DoubleSide;
+      MESH.scale.multiplyScalar(0.65); //milyen nagy
+      MESH.rotation.set(0.3, 0, 0);
+      MESH.position.set(0, 0.9, 0.0); //milyen magasan van
+      OBJECT = new THREE.Object3D();
+      OBJECT.add(MESH);
+
+      threeStuffs.faceObject.add(OBJECT);
+    },
+    function (xhr) {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    function (error) {
+      console.error(error);
+    }
+  );
+
+  startAudio("officer");
+}
+
+function onDogClicked(event) {
+  chosenFilter = "dog";
+  addActiveClass(chosenFilter);
+  if (around != null) {
+    around.stop();
+  }
+
+  threeStuffs.faceObject.children = [];
+
+  let DOGOBJ3D = new THREE.Object3D();
+  let NOSEMESH = null,
+    EARMESH = null;
+
+  // let's begin by creating a loading manager that will allow us to
+  // have more control over the three parts of our dog model
+  const loadingManager = new THREE.LoadingManager();
+
+  const loaderEars = new THREE.BufferGeometryLoader(loadingManager);
+
+  loaderEars.load("../models/dog_ears.json", (geometry) => {
+    const mat = new THREE.MeshPhongMaterial({
+      map: new THREE.TextureLoader().load("../models/texture_ears.jpg"),
+      reflectionRatio: 1,
+      shininess: 50,
+    });
+
+    EARMESH = new THREE.Mesh(geometry, mat);
+    EARMESH.scale.multiplyScalar(0.025);
+    EARMESH.position.setY(-0.2);
+    EARMESH.frustumCulled = false;
+    EARMESH.renderOrder = 10000;
+  });
+  // CREATE OUR DOG NOSE
+  const loaderNose = new THREE.BufferGeometryLoader(loadingManager);
+
+  loaderNose.load("../models/dog_nose.json", function (geometry) {
+    const mat = new THREE.MeshPhongMaterial({
+      map: new THREE.TextureLoader().load("../models/texture_nose.jpg"),
+      shininess: 1.5,
+      specular: 0xffffff,
+      bumpMap: new THREE.TextureLoader().load("../models/normal_nose.jpg"),
+      bumpScale: 0.005,
+    });
+
+    NOSEMESH = new THREE.Mesh(geometry, mat);
+    NOSEMESH.scale.multiplyScalar(0.018);
+    NOSEMESH.position.setZ(0.15);
+    NOSEMESH.frustumCulled = false;
+    NOSEMESH.renderOrder = 10000;
+  });
+
+  const _quat = new THREE.Quaternion();
+  const _eul = new THREE.Euler();
+  _eul.setFromQuaternion(_quat);
+
+  loadingManager.onLoad = () => {
+    DOGOBJ3D.add(EARMESH);
+    DOGOBJ3D.add(NOSEMESH);
+
+    threeStuffs.faceObject.add(DOGOBJ3D);
+  };
+
+  startAudio("dog");
+}
+
 function onChefClicked(event) {
   // delete previous filter
   chosenFilter = "chef";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -664,6 +746,7 @@ function onChefClicked(event) {
 function onElegantClicked(event) {
   // delete previous filter
   chosenFilter = "elegant";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -699,6 +782,7 @@ function onElegantClicked(event) {
 function onPirateClicked(event) {
   // delete previous filter
   chosenFilter = "pirate";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -734,6 +818,7 @@ function onPirateClicked(event) {
 function onVikingClicked(event) {
   // delete previous filter
   chosenFilter = "viking";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -769,6 +854,7 @@ function onVikingClicked(event) {
 function onCrownClicked(event) {
   // delete previous filter
   chosenFilter = "crown";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -801,9 +887,118 @@ function onCrownClicked(event) {
   startAudio("crown");
 }
 
+function onGlassesClicked(event) {
+  // delete previous filter
+  chosenFilter = "glasses";
+  addActiveClass(chosenFilter);
+  if (around != null) {
+    around.stop();
+  }
+
+  threeStuffs.faceObject.children = [];
+  const loader = new THREE.GLTFLoader();
+
+  loader.load(
+    "../models/glasses.glb",
+    function (glb) {
+      MESH = glb.scene;
+      MESH.frustumCulled = false;
+      MESH.side = THREE.DoubleSide;
+      MESH.scale.multiplyScalar(0.9); //milyen nagy
+      MESH.rotation.set(0, 0, 0);
+      MESH.position.set(-0.05, 0.35, 0.0); //milyen magasan van
+      OBJECT = new THREE.Object3D();
+      OBJECT.add(MESH);
+
+      threeStuffs.faceObject.add(OBJECT);
+    },
+    function (xhr) {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    function (error) {
+      console.error(error);
+    }
+  );
+
+  startAudio("glass");
+}
+
+function onSunGlassesClicked(event) {
+  // delete previous filter
+  chosenFilter = "sunglass";
+  addActiveClass(chosenFilter);
+  if (around != null) {
+    around.stop();
+  }
+
+  threeStuffs.faceObject.children = [];
+  const loader = new THREE.GLTFLoader();
+
+  loader.load(
+    "../models/glazz.glb",
+    function (glb) {
+      MESH = glb.scene;
+      MESH.frustumCulled = false;
+      MESH.side = THREE.DoubleSide;
+      MESH.scale.multiplyScalar(0.098); //milyen nagy
+      MESH.rotation.set(0, 0, 0);
+      MESH.position.set(-0.05, 0.38, 0.0); //milyen magasan van
+      OBJECT = new THREE.Object3D();
+      OBJECT.add(MESH);
+
+      threeStuffs.faceObject.add(OBJECT);
+    },
+    function (xhr) {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    function (error) {
+      console.error(error);
+    }
+  );
+
+  startAudio("sunglass");
+}
+
+function onFlowerClicked(event) {
+  // delete previous filter
+  chosenFilter = "flower";
+  addActiveClass(chosenFilter);
+  if (around != null) {
+    around.stop();
+  }
+
+  threeStuffs.faceObject.children = [];
+  const loader = new THREE.GLTFLoader();
+
+  loader.load(
+    "../models/flower.glb",
+    function (glb) {
+      MESH = glb.scene;
+      MESH.frustumCulled = false;
+      MESH.side = THREE.DoubleSide;
+      MESH.scale.multiplyScalar(1.3); //milyen nagy
+      MESH.rotation.set(0, 70, 1);
+      MESH.position.set(-0.5, 0.8, 0.0); //milyen magasan van
+      OBJECT = new THREE.Object3D();
+      OBJECT.add(MESH);
+
+      threeStuffs.faceObject.add(OBJECT);
+    },
+    function (xhr) {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    function (error) {
+      console.error(error);
+    }
+  );
+
+  startAudio("flower");
+}
+
 function onMustacheClicked(event) {
   // delete previous filter
   chosenFilter = "mustache";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -836,44 +1031,10 @@ function onMustacheClicked(event) {
   startAudio("mustache");
 }
 
-function onVenetianClicked(event) {
-  // delete previous filter
-  chosenFilter = "venetian";
-  if (around != null) {
-    around.stop();
-  }
-
-  threeStuffs.faceObject.children = [];
-  const loader = new THREE.GLTFLoader();
-
-  loader.load(
-    "../models/venetian3.glb",
-    function (glb) {
-      MESH = glb.scene;
-      MESH.frustumCulled = false;
-      MESH.side = THREE.DoubleSide;
-      MESH.scale.multiplyScalar(2.5);
-      MESH.rotation.set(0, 0, 0);
-      MESH.position.set(0.0, -0.15, 0.0); //milyen magasan van
-      OBJECT = new THREE.Object3D();
-      OBJECT.add(MESH);
-
-      threeStuffs.faceObject.add(OBJECT);
-    },
-    function (xhr) {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    },
-    function (error) {
-      console.error(error);
-    }
-  );
-
-  startAudio("venetian");
-}
-
 function onHelmetClicked(event) {
   // CREATE THE HELMET MESH AND ADD IT TO THE SCENE:
   chosenFilter = "helmet";
+  addActiveClass(chosenFilter);
   if (around != null) {
     around.stop();
   }
@@ -984,6 +1145,42 @@ function onHelmetClicked(event) {
   startAudio("helmet");
 }
 
+function onVenetianClicked(event) {
+  // delete previous filter
+  chosenFilter = "venetian";
+  addActiveClass(chosenFilter);
+  if (around != null) {
+    around.stop();
+  }
+
+  threeStuffs.faceObject.children = [];
+  const loader = new THREE.GLTFLoader();
+
+  loader.load(
+    "../models/venetian3.glb",
+    function (glb) {
+      MESH = glb.scene;
+      MESH.frustumCulled = false;
+      MESH.side = THREE.DoubleSide;
+      MESH.scale.multiplyScalar(2.5);
+      MESH.rotation.set(0, 0, 0);
+      MESH.position.set(0.0, -0.15, 0.0); //milyen magasan van
+      OBJECT = new THREE.Object3D();
+      OBJECT.add(MESH);
+
+      threeStuffs.faceObject.add(OBJECT);
+    },
+    function (xhr) {
+      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+    },
+    function (error) {
+      console.error(error);
+    }
+  );
+
+  startAudio("venetian");
+}
+
 let billCount = 0;
 
 function animateBill(mesh, index) {
@@ -1017,70 +1214,6 @@ function animateBill(mesh, index) {
   }, 3000);
 }
 
-function onDogClicked(event) {
-  chosenFilter = "dog";
-  if (around != null) {
-    around.stop();
-  }
-
-  threeStuffs.faceObject.children = [];
-
-  let DOGOBJ3D = new THREE.Object3D();
-  let NOSEMESH = null,
-    EARMESH = null;
-
-  // let's begin by creating a loading manager that will allow us to
-  // have more control over the three parts of our dog model
-  const loadingManager = new THREE.LoadingManager();
-
-  const loaderEars = new THREE.BufferGeometryLoader(loadingManager);
-
-  loaderEars.load("../models/dog_ears.json", (geometry) => {
-    const mat = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load("../models/texture_ears.jpg"),
-      reflectionRatio: 1,
-      shininess: 50,
-    });
-
-    EARMESH = new THREE.Mesh(geometry, mat);
-    EARMESH.scale.multiplyScalar(0.025);
-    EARMESH.position.setY(-0.2);
-    EARMESH.frustumCulled = false;
-    EARMESH.renderOrder = 10000;
-  });
-  // CREATE OUR DOG NOSE
-  const loaderNose = new THREE.BufferGeometryLoader(loadingManager);
-
-  loaderNose.load("../models/dog_nose.json", function (geometry) {
-    const mat = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load("../models/texture_nose.jpg"),
-      shininess: 1.5,
-      specular: 0xffffff,
-      bumpMap: new THREE.TextureLoader().load("../models/normal_nose.jpg"),
-      bumpScale: 0.005,
-    });
-
-    NOSEMESH = new THREE.Mesh(geometry, mat);
-    NOSEMESH.scale.multiplyScalar(0.018);
-    NOSEMESH.position.setZ(0.15);
-    NOSEMESH.frustumCulled = false;
-    NOSEMESH.renderOrder = 10000;
-  });
-
-  const _quat = new THREE.Quaternion();
-  const _eul = new THREE.Euler();
-  _eul.setFromQuaternion(_quat);
-
-  loadingManager.onLoad = () => {
-    DOGOBJ3D.add(EARMESH);
-    DOGOBJ3D.add(NOSEMESH);
-
-    threeStuffs.faceObject.add(DOGOBJ3D);
-  };
-
-  startAudio("dog");
-}
-
 function createImage(event) {
   var url = canvas.toDataURL();
 
@@ -1100,13 +1233,16 @@ function createImage(event) {
 function onMarkerClicked(event) {
   let button = document.getElementById("button");
   let arjs = document.getElementById("arjs");
+  let download = document.getElementById("download");
   if (!arjsShown) {
+    download.style.display = "block";
     canvas.style.display = "none";
     button.style.display = "none";
     arjs.style.display = "block";
     event.target.value = "Back to filters!";
     arjsShown = true;
   } else {
+    download.style.display = "none";
     canvas.style.display = "block";
     button.style.display = "block";
     arjs.style.display = "none";
@@ -1115,39 +1251,324 @@ function onMarkerClicked(event) {
   }
 }
 
+function getWeather(e) {
+  let location = document.getElementById("location");
+  let place = location.value;
+  console.log(place);
+
+  const xhr = new XMLHttpRequest();
+  xhr.open(
+    "GET",
+    `https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&mode=json&appid=8848cf086e99f337aa30552c953f0eb3`
+  );
+  xhr.send();
+  xhr.onload = () => {
+    // we can change the data type to json also by
+    const data = JSON.parse(xhr.response);
+    console.log(data.weather[0].main);
+    let mainWeather = data.weather[0].main;
+    console.log(data.main.temp);
+    let celsius = parseInt(data.main.temp, 10);
+
+    const fontLoader = new THREE.FontLoader();
+
+    fontLoader.load("../models/font.json", (font) => {
+      const textGeometry = new THREE.TextGeometry(`${celsius} °C`, {
+        font: font,
+        size: 0.25,
+        height: 0.1,
+        curveSegments: 12,
+      });
+
+      const textMesh = new THREE.Mesh(
+        textGeometry,
+        new THREE.MeshBasicMaterial({
+          color: 0x000000,
+        })
+      );
+      textMesh.position.x -= 0.5;
+      textMesh.position.y -= 1;
+      threeStuffs.faceObject.add(textMesh);
+    });
+
+    chosenFilter = "weather";
+    if (around != null) {
+      around.stop();
+    }
+
+    threeStuffs.faceObject.children = [];
+
+    const loader = new THREE.GLTFLoader();
+
+    switch (mainWeather) {
+      case "Thunderstorm":
+        loader.load(
+          "../models/umbrella.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.11);
+            MESH.rotation.set(0, 4, 0);
+            MESH.position.set(0.75, -0.4, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        break;
+      case "Drizzle":
+        loader.load(
+          "../models/umbrella.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.11);
+            MESH.rotation.set(0, 4, 0);
+            MESH.position.set(0.75, -0.4, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        break;
+      case "Rain":
+        loader.load(
+          "../models/umbrella.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.11);
+            MESH.rotation.set(0, 4, 0);
+            MESH.position.set(0.75, -0.4, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        break;
+      case "Snow":
+        loader.load(
+          "../models/snow.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.1);
+            MESH.rotation.set(0, 4, 0);
+            MESH.position.set(-2, 1.5, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        loader.load(
+          "../models/snow.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.1);
+            MESH.rotation.set(0, 4, 0);
+            MESH.position.set(-0.6, 1.6, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        break;
+      case "Clear":
+        loader.load(
+          "../models/sundraw.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.02);
+            MESH.rotation.set(0, 10, 0);
+            MESH.position.set(-1.5, 1.5, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        break;
+      case "Clouds":
+        loader.load(
+          "../models/cloud.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.25);
+            MESH.rotation.set(0, 0, 0);
+            MESH.position.set(-1.5, 1.5, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        loader.load(
+          "../models/cloud.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.25);
+            MESH.rotation.set(0, 0, 0);
+            MESH.position.set(0.4, 1.5, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        break;
+      default:
+        loader.load(
+          "../models/cloud.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.25);
+            MESH.rotation.set(0, 0, 0);
+            MESH.position.set(-1.5, 1.5, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        loader.load(
+          "../models/cloud.glb",
+          function (glb) {
+            MESH = glb.scene;
+            MESH.frustumCulled = false;
+            MESH.side = THREE.DoubleSide;
+            MESH.scale.multiplyScalar(0.25);
+            MESH.rotation.set(0, 0, 0);
+            MESH.position.set(0.4, 1.5, 0); //milyen magasan van
+            OBJECT = new THREE.Object3D();
+            OBJECT.add(MESH);
+
+            threeStuffs.faceObject.add(OBJECT);
+          },
+          function (xhr) {
+            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+        break;
+    }
+  };
+  let weather = document.getElementById("weather");
+  weather.style.display = "none";
+  location.style.display = "none";
+  let showWeather = document.getElementById("showweather");
+  showWeather.style.display = "block";
+}
+
+function showWeather() {
+  let weather = document.getElementById("weather");
+  weather.style.display = "block";
+  let location = document.getElementById("location");
+  location.style.display = "block";
+  location.value = "";
+  location.placeHolder = "Enter location...";
+  let showWeather = document.getElementById("showweather");
+  showWeather.style.display = "none";
+}
+
 // CHANGE FILTERS
 
-document
-  .getElementById("graduation")
-  .addEventListener("click", onGraduationClicked);
-
-document.getElementById("cowboy").addEventListener("click", onCowboyClicked);
-document.getElementById("boater").addEventListener("click", onBoaterClicked);
-document.getElementById("pumpkin").addEventListener("click", onPumpkinClicked);
-document.getElementById("wizard").addEventListener("click", onWizardClicked);
-document.getElementById("sun").addEventListener("click", onSunClicked);
-document.getElementById("officer").addEventListener("click", onOfficerClicked);
-document.getElementById("party").addEventListener("click", onPartyClicked);
-document.getElementById("flower").addEventListener("click", onFlowerClicked);
-document.getElementById("glasses").addEventListener("click", onGlassesClicked);
-document
-  .getElementById("sunglass")
-  .addEventListener("click", onSunGlassesClicked);
-document.getElementById("alvin").addEventListener("click", onAlvinClicked);
-document.getElementById("chef").addEventListener("click", onChefClicked);
-document.getElementById("elegant").addEventListener("click", onElegantClicked);
-document.getElementById("pirate").addEventListener("click", onPirateClicked);
-document.getElementById("viking").addEventListener("click", onVikingClicked);
-document.getElementById("crown").addEventListener("click", onCrownClicked);
-document
-  .getElementById("mustache")
-  .addEventListener("click", onMustacheClicked);
-document.getElementById("helmet").addEventListener("click", onHelmetClicked);
-document.getElementById("dog").addEventListener("click", onDogClicked);
+graduationLi.addEventListener("click", onGraduationClicked);
+cowboyLi.addEventListener("click", onCowboyClicked);
+boaterLi.addEventListener("click", onBoaterClicked);
+pumpkinLi.addEventListener("click", onPumpkinClicked);
+wizardLi.addEventListener("click", onWizardClicked);
+sunhatLi.addEventListener("click", onSunClicked);
+officerLi.addEventListener("click", onOfficerClicked);
+partyLi.addEventListener("click", onPartyClicked);
+flowerLi.addEventListener("click", onFlowerClicked);
+glassesLi.addEventListener("click", onGlassesClicked);
+sunglassLi.addEventListener("click", onSunGlassesClicked);
+alvinLi.addEventListener("click", onAlvinClicked);
+chefLi.addEventListener("click", onChefClicked);
+elegantLi.addEventListener("click", onElegantClicked);
+pirateLi.addEventListener("click", onPirateClicked);
+vikingLi.addEventListener("click", onVikingClicked);
+crownLi.addEventListener("click", onCrownClicked);
+mustacheLi.addEventListener("click", onMustacheClicked);
+helmetLi.addEventListener("click", onHelmetClicked);
+dogLi.addEventListener("click", onDogClicked);
 document.getElementById("button").addEventListener("click", createImage);
-document
-  .getElementById("venetian")
-  .addEventListener("click", onVenetianClicked);
+venetianLi.addEventListener("click", onVenetianClicked);
 document.getElementById("hand").addEventListener("click", () => {
   chosenFilter = "hand";
   threeStuffs.faceObject.children = [];
@@ -1205,5 +1626,159 @@ document.getElementById("music").addEventListener("click", (event) => {
   }
 });
 
-//TODO: AR.JS
 document.getElementById("marker").addEventListener("click", onMarkerClicked);
+document.getElementById("weather").addEventListener("click", getWeather);
+document.getElementById("showweather").addEventListener("click", showWeather);
+
+window.addEventListener(
+  "keydown",
+  (event) => {
+    switch (event.key) {
+      case "ArrowLeft":
+        // Left pressed
+        if (!chosenFilter) {
+          graduationLi.click();
+        } else {
+          switch (chosenFilter) {
+            case "graduation":
+              chosenFilter = null;
+              break;
+            case "cowboy":
+              graduationLi.click();
+              break;
+            case "boater":
+              cowboyLi.click();
+              break;
+            case "sunhat":
+              boaterLi.click();
+              break;
+            case "pumpkin":
+              sunhatLi.click();
+              break;
+            case "wizard":
+              pumpkinLi.click();
+              break;
+            case "party":
+              wizardLi.click();
+              break;
+            case "alvin":
+              partyLi.click();
+              break;
+            case "officer":
+              alvinLi.click();
+              break;
+            case "dog":
+              officerLi.click();
+              break;
+            case "chef":
+              dogLi.click();
+              break;
+            case "elegant":
+              chefLi.click();
+              break;
+            case "pirate":
+              elegantLi.click();
+              break;
+            case "viking":
+              pirateLi.click();
+              break;
+            case "crown":
+              glassesLi.click();
+              vikingLi;
+            case "glasses":
+              crownLi.click();
+              break;
+            case "sunglass":
+              glassesLi.click();
+              break;
+            case "flower":
+              sunglassLi.click();
+              break;
+            case "mustache":
+              flowerLi.click();
+              break;
+            case "helmet":
+              mustacheLi.click();
+              break;
+            case "venetian":
+              helmetLi.click();
+              break;
+          }
+        }
+        break;
+      case "ArrowRight":
+        // Right pressed
+        if (!chosenFilter) {
+          graduationLi.click();
+        } else {
+          switch (chosenFilter) {
+            case "graduation":
+              cowboyLi.click();
+              break;
+            case "cowboy":
+              boaterLi.click();
+              break;
+            case "boater":
+              sunhatLi.click();
+              break;
+            case "sunhat":
+              pumpkinLi.click();
+              break;
+            case "pumpkin":
+              wizardLi.click();
+              break;
+            case "wizard":
+              partyLi.click();
+              break;
+            case "party":
+              alvinLi.click();
+              break;
+            case "alvin":
+              officerLi.click();
+              break;
+            case "officer":
+              dogLi.click();
+              break;
+            case "dog":
+              chefLi.click();
+              break;
+            case "chef":
+              elegantLi.click();
+              break;
+            case "elegant":
+              pirateLi.click();
+              break;
+            case "pirate":
+              vikingLi.click();
+              break;
+            case "viking":
+              crownLi.click();
+              break;
+            case "crown":
+              glassesLi.click();
+              break;
+            case "glasses":
+              sunglassLi.click();
+              break;
+            case "sunglass":
+              flowerLi.click();
+              break;
+            case "flower":
+              mustacheLi.click();
+              break;
+            case "mustache":
+              helmetLi.click();
+              break;
+            case "helmet":
+              venetianLi.click();
+              break;
+            case "venetian":
+              chosenFilter = null;
+              break;
+          }
+        }
+        break;
+    }
+  },
+  true
+);

@@ -3,6 +3,26 @@
   <head>
     <script src="https://aframe.io/releases/1.0.2/aframe.min.js"></script>
     <script src="https://raw.githack.com/jeromeetienne/AR.js/2.2.2/aframe/build/aframe-ar.js"></script>
+    <script>
+      AFRAME.registerComponent("vidhandler", {
+        init: function () {
+          this.toggle = false;
+          this.vid = document.querySelector("#planets");
+          this.vid.pause();
+        },
+        tick: function () {
+          if (this.el.object3D.visible == true) {
+            if (!this.toggle) {
+              this.toggle = true;
+              this.vid.play();
+            }
+          } else {
+            this.toggle = false;
+            this.vid.pause();
+          }
+        },
+      });
+    </script>
   </head>
 
   <body style="margin: 0; overflow: hidden">
@@ -17,7 +37,25 @@
         <img id="saturn" src="../models/saturn.jpg" />
         <img id="uranus" src="../models/uranus.jpg" />
         <img id="neptune" src="../models/neptune.jpg" />
+        <img id="sun" src="../models/sun.png" />
+
+        <img id="play" src="../models/play.png" />
+        <img id="pause" src="../models/pause.png" />
+
+        <video id="planets" loop="true" src="../models/planets.mp4"></video>
       </a-assets>
+
+      <a-marker vidhandler preset="hiro">
+        <a-video
+          src="#planets"
+          width="8"
+          height="4"
+          position="0 0 0"
+          rotation="-95 0 0"
+          play="true"
+        >
+        </a-video>
+      </a-marker>
 
       <a-marker type="pattern" url="../models/moon.patt">
         <a-sphere
@@ -72,7 +110,7 @@
       <a-marker type="pattern" url="../models/jupiter.patt">
         <a-sphere
           material="src:#jupiter"
-          scale="1.5 1.5 1.5"
+          scale="1.8 1.8 1.8"
           rotation="0 90 90"
           position="0 0 -1"
           animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
@@ -86,7 +124,7 @@
           rotation="0 90 90"
           position="0 0 -1"
           animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
-        ></a-sphere> -->
+        ></a-sphere>  -->
         <a-entity
           scale="0.007 0.007 0.007"
           gltf-model="../models/saturn.glb"
@@ -114,6 +152,38 @@
           animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
         ></a-sphere>
       </a-marker>
+
+      <a-marker type="pattern" url="../models/sun.patt">
+        <a-sphere
+          material="src:#sun"
+          scale="2 2 2"
+          rotation="0 90 90"
+          position="0 0 -2"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-sphere>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/astronaut.patt">
+        <a-entity
+          scale="0.025 0.025 0.025"
+          gltf-model="../models/astronaut.glb"
+          position="1 0 0"
+          rotation="-90 0 0"
+          animation="property:rotation; from:0 0 0; to:0 360 0; dur:3000; easing:linear; loop:true;"
+        ></a-entity>
+      </a-marker>
+
+      <a-marker type="pattern" url="../models/meteor.patt">
+        <a-entity
+          scale="0.007 0.007 0.007"
+          gltf-model="../models/meteor.glb"
+          rotation="0 90 90"
+          position="0 0 0"
+          animation="property:rotation; from:0 90 90; to:360 90 90; dur:3000; easing:linear; loop:true;"
+        ></a-entity>
+      </a-marker>
+
+      <a-entity camera> </a-entity>
     </a-scene>
   </body>
 </html>
